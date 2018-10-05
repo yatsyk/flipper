@@ -16,6 +16,7 @@ matrix:
       script:
         - cd website
         - yarn build
+        - yarn test
         - cd ..
 
       deploy:
