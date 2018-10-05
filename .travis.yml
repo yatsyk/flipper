@@ -16,7 +16,6 @@ matrix:
       script:
         - cd website
         - yarn build
-        - yarn test
         - cd ..
 
       deploy:
@@ -28,6 +27,7 @@ matrix:
           keep-history: true
           on:
             branch: master
+
     - language: node_js
       node_js:
         - "10"
@@ -37,6 +37,7 @@ matrix:
 
       script:
         - yarn lint
+        - yarn test
         - yarn build --mac --version=$TRAVIS_BUILD_NUMBER
 
     - language: objective-c
