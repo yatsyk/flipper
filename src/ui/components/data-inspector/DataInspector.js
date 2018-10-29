@@ -5,17 +5,18 @@
  * @format
  */
 
+import React from 'react';
 import DataDescription from './DataDescription.js';
 import {Component} from 'react';
-import ContextMenu from '../ContextMenu.js';
+//import ContextMenu from '../ContextMenu.js';
 import Tooltip from '../Tooltip.js';
 import styled from '../../styled/index.js';
 import DataPreview from './DataPreview.js';
-import createPaste from '../../../utils/createPaste.js';
-import {reportInteraction} from '../../../utils/InteractionTracker.js';
+//import createPaste from '../../../utils/createPaste.js';
+//import {reportInteraction} from '../../../utils/InteractionTracker.js';
 import {getSortedKeys} from './utils.js';
 import {colors} from '../colors.js';
-import {clipboard} from 'electron';
+//import {clipboard} from 'electron';
 
 const deepEqual = require('deep-equal');
 
@@ -196,12 +197,12 @@ function getRootContextMenu(data: Object): Array<Electron$MenuItemOptions> {
     {
       type: 'separator',
     },
-    {
-      label: 'Create paste',
-      click: () => {
-        createPaste(stringValue);
-      },
-    },
+    //{
+    //label: 'Create paste',
+    //click: () => {
+    //createPaste(stringValue);
+    //},
+    //},
   ];
   rootContextMenuCache.set(data, menu);
   return menu;
@@ -297,11 +298,11 @@ export default class DataInspector extends Component<DataInspectorProps> {
     ancestry: [],
   };
 
-  interaction: (name: string) => void;
+  //interaction: (name: string) => void;
 
   constructor(props: DataInspectorProps) {
     super();
-    this.interaction = reportInteraction('DataInspector', props.path.join(':'));
+    //this.interaction = reportInteraction('DataInspector', props.path.join(':'));
   }
 
   static isExpandable(data: any) {
@@ -381,7 +382,7 @@ export default class DataInspector extends Component<DataInspectorProps> {
 
   handleClick = () => {
     const isExpanded = this.isExpanded(this.props.path);
-    this.interaction(isExpanded ? 'collapsed' : 'expanded');
+    //this.interaction(isExpanded ? 'collapsed' : 'expanded');
     this.setExpanded(this.props.path, !isExpanded);
   };
 
@@ -520,11 +521,12 @@ export default class DataInspector extends Component<DataInspectorProps> {
     }
 
     if (expandRoot === true) {
-      return (
-        <ContextMenu component="span" items={getRootContextMenu(data)}>
-          {propertyNodesContainer}
-        </ContextMenu>
-      );
+      //return (
+      //<ContextMenu component="span" items={getRootContextMenu(data)}>
+      //{propertyNodesContainer}
+      //</ContextMenu>
+      //);
+      return propertyNodesContainer;
     }
 
     // create name components
@@ -609,6 +611,23 @@ export default class DataInspector extends Component<DataInspectorProps> {
         click: () => clipboard.writeText(JSON.stringify(data, null, 2)),
       },
     );
+    //return (
+    //<BaseContainer
+    //depth={depth}
+    //disabled={
+    //Boolean(this.props.setValue) === true && Boolean(setValue) === false
+    //}>
+    //<ContextMenu component="span" items={contextMenuItems}>
+    //<PropertyContainer onClick={isExpandable ? this.handleClick : null}>
+    //{expandedPaths && <ExpandControl>{expandGlyph}</ExpandControl>}
+    //{descriptionOrPreview}
+    //{wrapperStart}
+    //</PropertyContainer>
+    //</ContextMenu>
+    //{propertyNodesContainer}
+    //{wrapperEnd}
+    //</BaseContainer>
+    //);
 
     return (
       <BaseContainer
@@ -616,13 +635,11 @@ export default class DataInspector extends Component<DataInspectorProps> {
         disabled={
           Boolean(this.props.setValue) === true && Boolean(setValue) === false
         }>
-        <ContextMenu component="span" items={contextMenuItems}>
-          <PropertyContainer onClick={isExpandable ? this.handleClick : null}>
-            {expandedPaths && <ExpandControl>{expandGlyph}</ExpandControl>}
-            {descriptionOrPreview}
-            {wrapperStart}
-          </PropertyContainer>
-        </ContextMenu>
+        <PropertyContainer onClick={isExpandable ? this.handleClick : null}>
+          {expandedPaths && <ExpandControl>{expandGlyph}</ExpandControl>}
+          {descriptionOrPreview}
+          {wrapperStart}
+        </PropertyContainer>
         {propertyNodesContainer}
         {wrapperEnd}
       </BaseContainer>

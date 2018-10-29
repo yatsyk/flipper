@@ -6,7 +6,7 @@
  */
 
 import type {DataInspectorSetValue} from './DataInspector.js';
-import {PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 import styled from '../../styled/index.js';
 import {SketchPicker} from 'react-color';
 import {Component} from 'react';
@@ -452,7 +452,8 @@ class DataDescriptionContainer extends Component<{
           return [
             <ColorBox key="color-box" color={`rgba(${r}, ${g}, ${b}, ${a})`} />,
             <ColorValue key="value">
-              rgba({r}, {g}, {b}, {a === 1 ? '1' : a.toFixed(2)})
+              rgba(
+              {r}, {g}, {b}, {a === 1 ? '1' : a.toFixed(2)})
             </ColorValue>,
           ];
         } else {
@@ -502,7 +503,11 @@ class DataDescriptionContainer extends Component<{
         return (
           <span>
             <FunctionKeyword>function</FunctionKeyword>
-            <FunctionName>&nbsp;{val.name}()</FunctionName>
+            <FunctionName>
+              &nbsp;
+              {val.name}
+              ()
+            </FunctionName>
           </span>
         );
 

@@ -5,6 +5,7 @@
  * @format
  */
 
+import React from 'react';
 import FlexColumn from './FlexColumn.js';
 import styled from '../styled/index.js';
 import Orderable from './Orderable.js';

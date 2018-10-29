@@ -4,7 +4,7 @@
  * LICENSE file in the root directory of this source tree.
  * @format
  */
-import {Component} from 'react';
+import React, {Component} from 'react';
 import {
   CodeBlock,
   colors,

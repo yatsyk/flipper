@@ -5,6 +5,7 @@
  * @format
  */
 
+import React from 'react';
 import styled from '../styled/index.js';
 import {Component} from 'react';
 

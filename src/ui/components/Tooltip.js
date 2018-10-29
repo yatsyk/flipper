@@ -5,6 +5,7 @@
  * @format
  */
 
+import React from 'react';
 import type TooltipProvider from './TooltipProvider.js';
 import type {TooltipOptions} from './TooltipProvider.js';
 

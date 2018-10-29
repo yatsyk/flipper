@@ -8,10 +8,10 @@
 import * as React from 'react';
 import Glyph from './Glyph.js';
 import PropTypes from 'prop-types';
-import electron from 'electron';
+//import electron from 'electron';
 import styled from '../styled/index.js';
 import {colors} from './colors.js';
-import {connect} from 'react-redux';
+//import {connect} from 'react-redux';
 import {findDOMNode} from 'react-dom';
 import {keyframes} from 'react-emotion';
 
@@ -268,30 +268,30 @@ class Button extends React.Component<
     if (this.props.disabled === true) {
       return;
     }
-    if (this.props.dropdown) {
-      const menu = electron.remote.Menu.buildFromTemplate(this.props.dropdown);
-      const position = {};
-      const {current} = this._ref;
-      if (current) {
-        const node = findDOMNode(current);
-        if (node instanceof Element) {
-          const {left, bottom} = node.getBoundingClientRect();
-          position.x = parseInt(left, 10);
-          position.y = parseInt(bottom + 6, 10);
-        }
-      }
-      menu.popup({
-        window: electron.remote.getCurrentWindow(),
-        async: true,
-        ...position,
-      });
-    }
+    //if (this.props.dropdown) {
+    //const menu = electron.remote.Menu.buildFromTemplate(this.props.dropdown);
+    //const position = {};
+    //const {current} = this._ref;
+    //if (current) {
+    //const node = findDOMNode(current);
+    //if (node instanceof Element) {
+    //const {left, bottom} = node.getBoundingClientRect();
+    //position.x = parseInt(left, 10);
+    //position.y = parseInt(bottom + 6, 10);
+    //}
+    //}
+    //menu.popup({
+    //window: electron.remote.getCurrentWindow(),
+    //async: true,
+    //...position,
+    //});
+    //}
     if (this.props.onClick) {
       this.props.onClick(e);
     }
-    if (this.props.href != null) {
-      electron.shell.openExternal(this.props.href);
-    }
+    //if (this.props.href != null) {
+    //electron.shell.openExternal(this.props.href);
+    //}
   };
 
   render() {
@@ -350,9 +350,12 @@ class Button extends React.Component<
   }
 }
 
-const ConnectedButton = connect(({application: {windowIsFocused}}) => ({
-  windowIsFocused,
-}))(Button);
+//const ConnectedButton = connect(({application: {windowIsFocused}}) => ({
+//windowIsFocused,
+//}))(Button);
 
 // $FlowFixMe
-export default (ConnectedButton: StyledComponent<Props>);
+//export default (ConnectedButton: StyledComponent<Props>);
+//
+
+export default Button;

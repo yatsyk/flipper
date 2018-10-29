@@ -10,7 +10,7 @@ import DataDescription from './DataDescription.js';
 import {InspectorName} from './DataInspector.js';
 import styled from '../../styled/index.js';
 import {getSortedKeys} from './utils.js';
-import {PureComponent} from 'react';
+import React, {PureComponent} from 'react';
 
 const PreviewContainer = styled('span')({
   fontStyle: 'italic',
